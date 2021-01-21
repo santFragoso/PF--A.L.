@@ -3,17 +3,23 @@
 def conjGenTipo1(matrizDeRelaciones):
   matrizRREF = matrizDeRelaciones.rref()
   m, n = matrizDeRelaciones.dimensions()
-  columnasPivote = matrizRREF.pivots
+  columnasPivote = matrizRREF.pivots()
   cardinalidadPivotes = len(columnasPivote)
   cardinalidadConjuntoGen = n - len(columnasPivote)
   conjuntoVectoresGen = [None] * cardinalidadConjuntoGen
-  for i in range(1, cardinalidadConjuntoGen):
+  elementosPorVector = m + cardinalidadPivotes
+  vectorTemporalConjuntoGen = Matrix(elementosPorVector)
+  for i in range(0, cardinalidadConjuntoGen):
     for j in range(0, m):
-      conjuntoVectoresGen[i-1, j] = matrizRREF[j, cardinalidadPivotes + (i-1)]
+      vectorTemporalConjuntoGen[j] = matrizRREF[j, cardinalidadPivotes + (i-1)]
+     ## conjuntoVectoresGen[i-1] = matrizRREF[j, cardinalidadPivotes + (i-1)]
     for k in range(0, n - cardinalidadPivotes - 1):
-      conjuntoVectoresGen[i-1, m+k]  agregar los 0s
-     conjuntoVectoresGen[i-1, m+(i-1)] = 1
-   return conjuntoVectoresGen
+      vectorTemporalConjuntoGen[m+k] = 0  ##ponemos los 0 restantes
+      
+    vectorTemporalConjuntoGen[m+(i)] = 1  ##ponemos el 1 correspondiente
+    conjuntoVectoresGen[i] = vectorTemporalConjuntoGen
+  
+  return conjuntoVectoresGen
       
       
       ##agarra cada elemento de la columna y copiarlo en un array que despues debe ser metido en el arreglo
@@ -34,7 +40,7 @@ def conjGenTipo3():
 
 def conjuntoGenerador(matrizDeRelaciones, tipo, dimMConjGenMatriz, dimNConjGenMatriz): 
   if (tipo == 1):
-    conjGenTipo1(matrizDeRelaciones)
+    print(conjGenTipo1(matrizDeRelaciones))
     
   if (tipo == 2):
     conjGenTipo2(matrizDerelaciones)
@@ -51,7 +57,7 @@ def conjuntoGenerador(matrizDeRelaciones, tipo, dimMConjGenMatriz, dimNConjGenMa
 ##Datos para ejecutar ejemplos:
 matrizDeRelaciones = Matrix([[1,2,-1,3],[3,5,-4,7]])
 tipo = 1 
-conjuntoGenerador(matrizDeRelaciones, tipo)
+conjuntoGenerador(matrizDeRelaciones, tipo, 0, 0)
 
                  
                
