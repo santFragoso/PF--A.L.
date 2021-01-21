@@ -9,11 +9,11 @@ def conjGenTipo1(matrizDeRelaciones):
   conjuntoVectoresGen = [None] * cardinalidadConjuntoGen
   for i in range(1, cardinalidadConjuntoGen):
     for j in range(0, m):
-      conjuntoVectoresGen[i-1, j] = matrizRREF[j, cardinalidadPivotes]
+      conjuntoVectoresGen[i-1, j] = matrizRREF[j, cardinalidadPivotes + (i-1)]
     for k in range(0, n - cardinalidadPivotes - 1):
-      conjuntoVectoresGen[i-1, j]  ##LLenar de 0s y luego meter un 1 donde corresponda con respecto a i
-     ##Agregar los 0's
-      
+      conjuntoVectoresGen[i-1, m+k]  agregar los 0s
+     conjuntoVectoresGen[i-1, m+(i-1)] = 1
+   return conjuntoVectoresGen
       
       
       ##agarra cada elemento de la columna y copiarlo en un array que despues debe ser metido en el arreglo
