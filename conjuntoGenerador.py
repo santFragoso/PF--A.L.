@@ -1,34 +1,27 @@
 ##código para el conjunto generador
 
+
+
 def conjGenTipo1(matrizDeRelaciones):
   matrizRREF = matrizDeRelaciones.rref()
-  m, n = matrizDeRelaciones.dimensions()
-  columnasPivote = matrizRREF.pivots()
-  cardinalidadPivotes = len(columnasPivote)
-  cardinalidadConjuntoGen = n - len(columnasPivote)
-  conjuntoVectoresGen = [None] * cardinalidadConjuntoGen
-  elementosPorVector = m + cardinalidadPivotes
-  vectorTemporalConjuntoGen = Matrix(elementosPorVector)
-  for i in range(0, cardinalidadConjuntoGen):
-    for j in range(0, m):
-      vectorTemporalConjuntoGen[j] = matrizRREF[j, cardinalidadPivotes + (i-1)]
-     ## conjuntoVectoresGen[i-1] = matrizRREF[j, cardinalidadPivotes + (i-1)]
-    for k in range(0, n - cardinalidadPivotes - 1):
-      vectorTemporalConjuntoGen[m+k] = 0  ##ponemos los 0 restantes
-      
-    vectorTemporalConjuntoGen[m+(i)] = 1  ##ponemos el 1 correspondiente
-    conjuntoVectoresGen[i] = vectorTemporalConjuntoGen
+  m,n = matrizDeRelaciones.dimensions()
+  columnasPivote = matrizRREF.pivots() 
+  numColumnasPivote = len(columnasPivote)
+  numConjuntoGen = n - numColumnasPivote
+  cardinalidadVectores = m + numColumnasPivote
+  conjuntoVectoresGen = Matrix(numConjuntoGen, cardinalidadVectores) ##las filas son los vectores
   
+  for i in range(0, numConjuntoGen):
+    ##copiamos la columna en negativo (numColumnasPivote + i) del rref en la fila que le corresponde
+    for j in range(0,m):
+      conjuntoVectoresGen[i, j] = -( matrizRREF[j, numColumnasPivote + i] )
+    ##Antes de cambiar de fila(vector) agregamos los 0 pertinentes  
+    for k in range(0, numColumnasPivote):
+      conjuntoVectoresGen[i,m + k] = 0
+    conjuntoVectoresGen[i, m + i] = 1 ##Agregamos el 1 donde corresponde
+    
+  for l in range(0, numConjuntoGen)
   return conjuntoVectoresGen
-      
-      
-      ##agarra cada elemento de la columna y copiarlo en un array que despues debe ser metido en el arreglo
-      ## conjuntoVectoresGen
-      
-  ## Cada vector es de longitud n, la cual debe corresponder a las columnas de la matriz
-  pass
-  pass
-
 
 def conjGenTipo2():
   pass
