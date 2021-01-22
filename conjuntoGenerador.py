@@ -19,9 +19,11 @@ def conjGenTipo1(matrizDeRelaciones):
     for k in range(0, numColumnasPivote):
       conjuntoVectoresGen[i,m + k] = 0
     conjuntoVectoresGen[i, m + i] = 1 ##Agregamos el 1 donde corresponde
-    
-  for l in range(0, numConjuntoGen)
-  return conjuntoVectoresGen
+  
+  listaConjuntoGenerador = []
+  for l in range(0, numConjuntoGen):
+    listaConjuntoGenerador.append(conjuntoVectoresGen[l])
+  return listaConjuntoGenerador
 
 def conjGenTipo2():
   pass
