@@ -4,20 +4,23 @@
 
 def conjGenTipo1(matrizDeRelaciones):
   matrizRREF = matrizDeRelaciones.rref()
+  print(matrizRREF)  
   m,n = matrizDeRelaciones.dimensions()
   columnasPivote = matrizRREF.pivots() 
   numColumnasPivote = len(columnasPivote)
+  print(numColumnasPivote)  
   numConjuntoGen = n - numColumnasPivote
-  cardinalidadVectores = m + numColumnasPivote
-  conjuntoVectoresGen = Matrix(numConjuntoGen, cardinalidadVectores) ##las filas son los vectores
+  cardinalidadVectores = n 
+  conjuntoVectoresGen = Matrix(QQ, numConjuntoGen, cardinalidadVectores) ##las filas son los vectores
   
   for i in range(0, numConjuntoGen):
     ##copiamos la columna en negativo (numColumnasPivote + i) del rref en la fila que le corresponde
     for j in range(0,m):
       conjuntoVectoresGen[i, j] = -( matrizRREF[j, numColumnasPivote + i] )
     ##Antes de cambiar de fila(vector) agregamos los 0 pertinentes  
-    for k in range(0, numColumnasPivote):
+    for k in range(0, n - numColumnasPivote):
       conjuntoVectoresGen[i,m + k] = 0
+      print("hola")  
     conjuntoVectoresGen[i, m + i] = 1 ##Agregamos el 1 donde corresponde
   
   listaConjuntoGenerador = []
@@ -50,9 +53,8 @@ def conjuntoGenerador(matrizDeRelaciones, tipo, dimMConjGenMatriz, dimNConjGenMa
 
 
 ##Datos para ejecutar ejemplos:
-matrizDeRelaciones = Matrix([[1,2,-1,3],[3,5,-4,7]])
+matrizDeRelaciones = Matrix([[1,3,3,0],[6,12,9,8]])
 tipo = 1 
 conjuntoGenerador(matrizDeRelaciones, tipo, 0, 0)
 
-                 
                
