@@ -5,10 +5,10 @@ def productovectores(u,v,MatrizP):
         return Producto
     else: 
         print("Debes ingresar una matriz simetrica y positiva definidad")
-        return -1
+        return None
         
 def ProyeccionOrtogonal(A,u,v):
-    if(productovectores(u,v,A)!= -1 and productovectores(u,u,A) != -1):
+    if(productovectores(u,v,A) != None and productovectores(u,u,A) != None):
         Componente = productovectores(u,v,A)/productovectores(u,u,A)
         Coeficiente = Componente * u
         return Componente, Coeficiente
