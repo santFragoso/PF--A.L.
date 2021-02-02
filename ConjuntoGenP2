@@ -1,11 +1,11 @@
-A = matrix(QQ,2,4,[1,2,-1,3,3,5,-4,7])
-B = identity_matrix(4)
+A = matrix(QQ,2,3,[1,1,1,1,-1,1])
 print(A)
 m,n = A.dimensions()
 print(" ")
 AER = A.rref()
 print(AER)
 Mayor = max(m,n)
+B = identity_matrix(Mayor)
 AN =matrix(Mayor,Mayor)
 print(" ")
 
@@ -22,5 +22,10 @@ print(ARN)
 CG = ARN - B
 print(" ")
 print(CG)
-
-print(-1*CG[][1])
+ColumnasCG = CG.columns()
+print(" ")
+print(ColumnasCG)
+print(" ")
+for i in range (0, Mayor):
+    if (ColumnasCG[i][0]!=0):
+        print(-1*ColumnasCG[i])
