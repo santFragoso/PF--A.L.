@@ -1,0 +1,35 @@
+A = matrix(QQ,2,2,[1,3,2,6])
+print(A)
+m,n = A.dimensions()
+print(" ")
+AER = A.rref()
+print(AER)
+Mayor = max(m,n)
+B = identity_matrix(Mayor)
+AN =matrix(Mayor,Mayor)
+print(" ")
+
+for i in range (0,Mayor):
+    for j in range (0,Mayor):
+        if (i<m):
+            AN[i,j]=A[i][j]
+        if (i>m):
+            AN[i,j]=0
+print(AN)
+print(" ")
+ARN = AN.rref()
+print(ARN)
+CG = ARN - B
+print(" ")
+print(CG)
+ColumnasCG = CG.columns()
+print(" ")
+print(ColumnasCG)
+print(" ")
+ListCG=[]
+for i in range (0, Mayor):
+    if (ColumnasCG[i][0]!=0):
+        print(-1*ColumnasCG[i])
+        ListCG.append(-1*ColumnasCG[i])
+        
+print(ListCG)
