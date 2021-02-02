@@ -31,10 +31,10 @@ def imprimirVectorEnMatriz(listaVectores,m,n):
         for k in range (0, m):
             for j in range (0,n):
                 B[k,j] = listaVectores[i][((k*n) + (j+1)) - 1]
-                print("elemento de vector: ",listaVectores[i][((k*n) + (j+1)) - 1])
+                
         listaMatrices.append(B)
-        print("a ",B)
-    print("Matrices")    
+        
+       
     print(" ")
     print(listaMatrices)
     return
@@ -60,12 +60,13 @@ def imprimirVectorEnMatriz(listaVectores,m,n):
 def conjuntoGenerador(A, tipo, dimMConjGenMatriz, dimNConjGenMatriz):
     #A = matrix(QQ,2,2,[1,3,2,6])
     #print(A)
+    
     if (tipo>3 or tipo<1):
         return "ERROR, tipo no válido"
     m,n = A.dimensions()
     print(" ")
     AER = A.rref()
-    print(AER)
+    
     Mayor = max(m,n)
     B = identity_matrix(Mayor)
     AN =matrix(Mayor,Mayor)
@@ -77,38 +78,38 @@ def conjuntoGenerador(A, tipo, dimMConjGenMatriz, dimNConjGenMatriz):
                 AN[i,j]=A[i][j]
             if (i>m):
                 AN[i,j]=0
-    print(AN)
-    print(" ")
+    
     ARN = AN.rref()
-    print(ARN)
-    CG = ARN - B
-    print(" ")
-    print(CG)
-    ColumnasCG = CG.columns()
-    print(" ")
-    print(ColumnasCG)
-    print(" ")
+    CG = ARN - B   
+    ColumnasCG = CG.columns()   
     ListCG=[]
     for i in range (0, Mayor):
         if (ColumnasCG[i][0]!=0):
-            print(-1*ColumnasCG[i])
             ListCG.append(-1*ColumnasCG[i])
         
-    print("conGenerador", ListCG)
+   
     
     if (tipo==1):
         print(ListCG)
     elif(tipo==2):
         pasar_lista_vectores(ListCG)
     elif(tipo==3):
-        imprimirVectorEnMatriz(ListCG,dimMConjGenMatriz, dimNConjGenMatriz )
-    else:
-        return "ERROR: tipo no compatible"
+        if (dimMConjGenMatriz == 0 or dimNConjGenMatriz == 0):
+            return "ERROR: ingrese dimensiones mayores a 0"
+        if (dimMConjGenMatriz * dimNConjGenMatriz != n):
+            return "ERROR: las dimensiones dada para las matrices no son compatibles con las dimensiones de la matriz de relaciones"
+        else:
+            imprimirVectorEnMatriz(ListCG,dimMConjGenMatriz, dimNConjGenMatriz)
+       
         
 
     
     
 A = matrix(QQ,2,4,[1,2,-1,3,3,5,-4,7])
-print(A)
-conjuntoGenerador(A, 3, 2, 2)
-    
+print("Matriz de relaciones dada: \n",A)
+conjuntoGenerador(A, 3, 2, 2) # A es la matriz, 3 es el tipo, 2,2 son las dimensiones que corresponden al tipo 3, matrices
+                                #el producto de las dimensiones dadas tiene que ser igual al numero de columnas de la matriz de relaciones
+                                #de lo contrario, el programa regresará un error
+                                #igualmente, no se admiten dimensiones <1
+                                #en el caso de que no se requieran matrices, se pueden ingeresar cualquier numero
+                                # es decir que si es tipo 1 o tipo 2, los dos ultimos valores son irrelevantes pero deben ingeresarse
