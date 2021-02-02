@@ -23,8 +23,6 @@ def pasar_lista_vectores(lista_vectores):
 def imprimirVectorEnMatriz(listaVectores,m,n):
     B = Matrix(m,n)
     listaMatrices = []
-    #print("control")
-    #print(listaVectores[0])
     
     for i in range (0,len(listaVectores)):
         B = Matrix(QQ, m,n)
@@ -39,28 +37,8 @@ def imprimirVectorEnMatriz(listaVectores,m,n):
     print(listaMatrices)
     return
            
-        
-    
-    
-    
-
-#if __name__ == "__main__":
- #   A=np.array(([3,9,7,5,76,329]))
-#    B=np.array(([1,2,3]))
-    #Opcion 1
-  #  print("imprimir vectores\n")
-   # print(vector_Polinomio(A))
-    #print(vector_Polinomio(B))
-    ###EXTENSION CODIGO A LISTA DE VECTORES
-    #Opcion 2
-    #mi_lista=[A,B]
-    #print("imprimir lista de vectores\n")
-    #pasar_lista_vectores(mi_lista)
-
 def conjuntoGenerador(A, tipo, dimMConjGenMatriz, dimNConjGenMatriz):
-    #A = matrix(QQ,2,2,[1,3,2,6])
-    #print(A)
-    
+   
     if (tipo>3 or tipo<1):
         return "ERROR, tipo no válido"
     m,n = A.dimensions()
@@ -102,14 +80,86 @@ def conjuntoGenerador(A, tipo, dimMConjGenMatriz, dimNConjGenMatriz):
             imprimirVectorEnMatriz(ListCG,dimMConjGenMatriz, dimNConjGenMatriz)
        
         
+r"""
+    
+    	DESCRIPCIÓN DE LA FUNCIÓN
+	    *Te regresa un conjunto generador para un subespacio, el cual está definido
+	    por una matriz de relaciones dada
+	
+	Entrada (INPUT)
+		*Una matriz de relaciones
+		*Un número para indicar el tipo de subespacio(1 subespacio de R^n, 2 subespacio de polinomios, 3 subespacio de matrices).
+		*El tamaño de la matriz cuando se trata de subespacios de tipo 3. 
+	Salida (OUTPUT)
+		*Un conjunto generador para el subespacio
+	
+	*Nota:
+	
+        *En el caso de matrices, el producto de las dimensiones dadas tiene que ser igual al numero de columnas de la matriz de relaciones, 
+        de lo contrario, el programa regresará un error
+        *igualmente, no se admiten dimensiones <1
+        *En caso de no requerir matrices, se puede ingresar cualquier numero en los apartados de dimensiones de las matrices, 
+        es decir que si es tipo 1 o tipo 2, los dos ultimos valores son irrelevantes pero deben ingresarse
+	
+	Ejemplos: 
+	
+	Ejemplo 1 con subespacios tipo 1 (vectores)
+	
+	B = matrix(QQ,2,2,[1,3,2,6])
 
+	print("Matriz de relaciones dada: \n",B)
+	conjuntoGenerador(B, 1,0,0)
+    
+    	Salida: 
+    
+    	Matriz de relaciones dada: 
+ 	[1 3]
+	[2 6]
+
+	[(-3, 1)]
+	
+	Ejemplo 2 con subespacios tipo 2 (polinomios):
+	
+	B = matrix(QQ,2,2,[1,3,2,6])
+
+	print("Matriz de relaciones dada: \n",B)
+	conjuntoGenerador(B, 2,0,0)
+    
+    	Salida: 
+    
+    	Matriz de relaciones dada: 
+ 	[1 3]
+	[2 6]
+	
+	3+-1t+1t^2+0t^3
+	1+-2t+0t^2+1t^3
+	
+	Ejemplo 3 con subespacios tipo 3 (matrices)
+	
+	A = matrix(QQ,2,4,[1,2,-1,3,3,5,-4,7])
+	print("Matriz de relaciones dada: \n",A)
+	conjuntoGenerador(A, 3, 2, 2)
+    
+    	Salida: 
+       
+    	Matriz de relaciones dada: 
+    	
+	[ 1  2 -1  3]
+	[ 3  5 -4  7]
+ 
+ 
+	[[ 3 -1] [ 1 -2]
+	 [ 1  0],[ 0  1]] 
+	
+	
+	
+	
+	
+	Authors: Jesus Santiago Fragoso Quintal, Luis Armando Valencia Serrano, Victor Eduardo Mendoza Solis, Ivan Farid
+	    	 Espadas Escalante (2021 - 02 - 02)
+    """
     
     
 A = matrix(QQ,2,4,[1,2,-1,3,3,5,-4,7])
 print("Matriz de relaciones dada: \n",A)
-conjuntoGenerador(A, 3, 2, 2) # A es la matriz, 3 es el tipo, 2,2 son las dimensiones que corresponden al tipo 3, matrices
-                                #el producto de las dimensiones dadas tiene que ser igual al numero de columnas de la matriz de relaciones
-                                #de lo contrario, el programa regresará un error
-                                #igualmente, no se admiten dimensiones <1
-                                #en el caso de que no se requieran matrices, se pueden ingeresar cualquier numero
-                                # es decir que si es tipo 1 o tipo 2, los dos ultimos valores son irrelevantes pero deben ingeresarse
+conjuntoGenerador(A, 3, 2, 2)
