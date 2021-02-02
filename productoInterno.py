@@ -21,24 +21,26 @@ def productovectores(u,v,aMatriz):
 	Ejemplos: 
 	
 	Ejemplo 1
+	
 	v1 = vector([1,1]); v2 = vector([1,-1]); v = vector([8,-2])
-    B = (v1,v2)
-    A = identity_matrix(2)
-    print (productovectores(v1,v2,A))
+    	B = (v1,v2)
+    	A = identity_matrix(2)
+    	print (productovectores(v1,v2,A))
     
-    Salida: 
+    	Salida: 
        
-    0
+    	0
 	
 	Ejemplo 2
-    u = vector([2,3]); d = vector([1,2])
-    C = matrix(2,[1,-1, -1,1])
+	
+	u = vector([2,3]); d = vector([1,2])
+    	C = matrix(2,[1,-1, -1,1])
     
-    Salida: 
+    	Salida: 
     
-    print (productovectores(u,d,C))
+    	print (productovectores(u,d,C))
     
-    Debes ingresar una matriz simetrica y positiva definidad
+    	Debes ingresar una matriz simetrica y positiva definidad
 	
 	Authors: Jesus Santiago Fragoso Quintal, Luis Armando Valencia Serrano, Victor Eduardo Mendoza Solis, Ivan Farid
 	    	 Espadas Escalante (2021 - 02 - 02)
@@ -67,12 +69,12 @@ def ProyeccionOrtogonal(A,u,v):
 	Ejemplos: 
 	u = vector([4,2]); d = vector([1,3])
    
-    A = identity_matrix(2)
-    print (ProyeccionOrtogonal(A,u,d))
+    	A = identity_matrix(2)
+    	print (ProyeccionOrtogonal(A,u,d))
     
-    Salida: 
+    	Salida: 
     
-    (1/2, (2, 1))
+    	(1/2, (2, 1))
 	
 	Authors: Jesus Santiago Fragoso Quintal, Luis Armando Valencia Serrano, Victor Eduardo Mendoza Solis, Ivan Farid
 	    	 Espadas Escalante (2021 - 02 - 02)
@@ -102,27 +104,29 @@ def ExpansionF(aMatriz, bBase, vVector):
 	Entrada (INPUT)
 		
 		*A, B = {v1 , . . . , vr }, v, donde A es una matriz, B es un conjunto
-    ortogonal (ortogonal con respecto al producto que determina A), v un vector.
+    	ortogonal (ortogonal con respecto al producto que determina A), v un vector.
+	
 	Salida (OUTPUT)
+		
 		*c_1 , . . . , c_r , donde c_i es el coeficiente de Fourier de v con respecto a la
         base ortogonal.
         
 	Ejemplo: 
 	
-    v1 = vector([1,1]); v2 = vector([1,-1]); v = vector([8,-2])
-    B = (v1,v2)
-    A = identity_matrix(2)
-    ExpansionF(A,B,v)
+	v1 = vector([1,1]); v2 = vector([1,-1]); v = vector([8,-2])
+    	B = (v1,v2)
+    	A = identity_matrix(2)
+    	ExpansionF(A,B,v)
     
-    Salida: 
+   	Salida: 
     
-    Combinación lineal:
+    	Combinación lineal:
  
-    3v1 + 5v2
+    	3v1 + 5v2
  
-    Coeficientes: 
+    	Coeficientes: 
  
-    3, 5
+    	3, 5
 	
 	Authors: Jesus Santiago Fragoso Quintal, Luis Armando Valencia Serrano, Victor Eduardo Mendoza Solis, Ivan Farid
 	    	 Espadas Escalante (2021 - 02 - 02)
@@ -157,14 +161,15 @@ def GramS(aMatriz, bBase):
         aplicar el proceso de Gram–Schmidt a la colección B.
         
 	Ejemplos: 
-       v1 = vector([1,0,1]); v2 = vector([1,1,0]); v3 = vector([1,1,1])
-       B = (v1,v2,v3)
-       A = identity_matrix(3)
-       GramS(A,B)
+       	v1 = vector([1,0,1]); v2 = vector([1,1,0]); v3 = vector([1,1,1])
+       	B = (v1,v2,v3)
+       	A = identity_matrix(3)
+       	GramS(A,B)
        
-       Salida: 
+       	Salida: 
        
-       [(1, 0, 1), (1/2, 1, -1/2), (-1/3, 1/3, 1/3)]
+       	[(1, 0, 1), (1/2, 1, -1/2), (-1/3, 1/3, 1/3)]
+	
 	Authors: Jesus Santiago Fragoso Quintal, Luis Armando Valencia Serrano, Victor Eduardo Mendoza Solis, Ivan Farid
 	    	 Espadas Escalante (2021 - 02 - 02)
     """
